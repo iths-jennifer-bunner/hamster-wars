@@ -1,0 +1,33 @@
+
+.App-header {
+    background-color: #FEEEEE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: black;
+}
+main{
+    padding: 1em;
+}
+
+header nav{
+    display: flex;
+    flex-direction: row;
+}
+header nav a{
+    color:black;
+    padding: 0.2em;
+    flex: 1 1 auto;
+    text-decoration: none;
+}
+
+header nav a.active{
+    background-color: white;
+    border-bottom: none;
+}
+
+footer{
+    background-color: #FEEEEE;
+}
