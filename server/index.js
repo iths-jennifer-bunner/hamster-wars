@@ -25,7 +25,7 @@ app.use('/api/assets', assetsRoute)
 
 
 app.listen(port, () => {
-    console.log('Server is up and running! ');
+    console.log('Server is up and running on: ', port);
     
 })
 
