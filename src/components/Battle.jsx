@@ -1,26 +1,31 @@
 import React, {useState} from 'react';
 
 const Battle = () => {
-    const [hamster, setHamster] = useState(null);
-    const handleClick = async () => {
-        let hamster1 = await getHamsters();
+    const [hamster1, setHamster1] = useState(null);
+    const [hamster2, setHamster2] = useState(null);
+    const handleClick1 = async () => {
+        let hamster = await getHamsters();
         console.log('Got hamsters from api:', hamster1);
-        setHamster(hamster1);
+        setHamster1(hamster);
     }
-    // const [click1, setClick1] =useState(false)
-    // const [click2, setClick2] =useState(false)
-
+    const handleClick2 = async () => {
+        let hamster = await getHamsters();
+        console.log('Got hamsters from api:', hamster1);
+        setHamster2(hamster);
+    }
+    const [click1, setClick1] =useState(false)
+    const [click2, setClick2] =useState(false)
     return(
         <div>
             <p>Click the image that has the most fab hamster</p>
-            <button onClick={handleClick}>New contestants</button>
-            {/* <div onClick={() => setClick1(true)}>Pic 1{click1=== true ? ':I am the winner' : ''}</div>
-            <div onClick={() => setClick2(true)}>Pic 2{click2=== true ? ':I am the winner' : ''}</div> */}
-            <div >
-                { hamster ? <div key={hamster.id}>{hamster.name} gillar {hamster.loves} och äter helst {hamster.favFood}.</div> : null }
+            <button onClick={handleClick1}>Contestant 1</button>
+            <button onClick={handleClick2}>Contestant</button>
+            <div onClick={() => setClick1(true)}>{click1=== true ? 'I am the winner' : ''}
+                { hamster1 ? <div >Contestant 1: is {hamster1.name}, {hamster1.age} years young, and likes {hamster1.loves} and eats {hamster1.favFood}.</div> : null }
             </div>
-            
-            
+            <div onClick={() => setClick2(true)}>{click2=== true ? 'I am the winner' : ''}
+                { hamster2 ? <div >Contestant 1: is {hamster2.name}, {hamster2.age} years young, and likes {hamster2.loves} and eats {hamster2.favFood}.</div> : null }
+            </div>
         </div>
     )
 }
@@ -29,9 +34,9 @@ async function getHamsters() {
     let baseUrl = '/api';
     try {
         const response = await fetch(baseUrl + '/hamsters/random');
-        const hamsterArray = await response.json();
+        const hamster = await response.json();
         console.log('response',response); 
-        return hamsterArray;
+        return hamster;
     } catch (e) {
         console.log('Fetch failed because', e);
         return null;
