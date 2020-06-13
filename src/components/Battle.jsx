@@ -16,8 +16,10 @@ const Battle = () => {
             <button onClick={handleClick}>New contestants</button>
             {/* <div onClick={() => setClick1(true)}>Pic 1{click1=== true ? ':I am the winner' : ''}</div>
             <div onClick={() => setClick2(true)}>Pic 2{click2=== true ? ':I am the winner' : ''}</div> */}
+            <div >
+                { hamster ? <div key={hamster.id}>{hamster.name} gillar {hamster.loves} och äter helst {hamster.favFood}.</div> : null }
+            </div>
             
-            { hamster }
             
         </div>
     )
