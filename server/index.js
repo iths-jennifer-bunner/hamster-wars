@@ -3,12 +3,11 @@ const express = require('express');
 let path = require('path');
 const app = express();
 
-
 const port = process.env.PORT || 2048;
 
 app.use(express.json())
 //app.use(express.static('public'))
-app.use(express.static(__dirname + '/../build'))
+app.use(express.static(path.join(__dirname + '/../build')))
 
 // let init = require('./initdb.js')
 
@@ -25,8 +24,8 @@ app.use('/api/stats', statsRoute)
 app.use('/api/assets', assetsRoute)
 
 app.get('*', (req, res) => {
-    let filePath = path.resolve('./build/index.html');
-    // let filePath = path.join(__dirname + '../build/index.html');
+    // let filePath = path.resolve('./build/index.html');
+    let filePath = path.join(__dirname + '../build/index.html');
     res.sendFile(filePath);
 })
 

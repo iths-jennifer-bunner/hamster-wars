@@ -15,7 +15,6 @@ const Battle = () => {
         async function handleClick1() {
                 let hamster = await getHamsters();
                 setHamster1(hamster);
-                console.log('setHamster1:',setHamster1);
                 
             }
             handleClick1()
@@ -32,10 +31,13 @@ const Battle = () => {
             handleClick2()
             
     }, [])
+
     
     return(
         <div>
             <p>Click the image that has the most fab hamster</p>
+            {/* <button onClick={handleClick1}>Contestant 1</button>
+            <button onClick={handleClick2}>Contestant 2</button> */}
             
             { hamster1 ? <div > <StyledImg src={"./hamsters/" + hamster1.imgName} alt="A hamster"  onClick={() => setClick1(true)}/>
             Contestant 1: is {hamster1.name}, {hamster1.age} years young, and likes {hamster1.loves} and eats {hamster1.favFood}.</div> : null }

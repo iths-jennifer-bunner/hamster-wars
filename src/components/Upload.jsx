@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import './Upload.css'
 
 const Upload = () => {
+    const [hamsterUploaded, setHamsterUploaded] = useState('');
+
     const [name, setName] = useState('')
     const [age, setAge] = useState('')
     const [favoriteFood, setFavoriteFood] = useState('')
@@ -67,14 +69,15 @@ const Upload = () => {
                     <div className='error'>{imageUploadError}</div>
             </div>
             <div className='form-group'>
-                <button disabled ={!formIsValid}>
-                {/* onClick={() => (formIsValid ? uploadHamster() : null)} */}
+                <button disabled ={!formIsValid}
+                onClick={() => upload(name,age,loves,favoriteFood)}>
                     Upload hamster
                 </button>
+                <p>{hamsterUploaded ? {setHamsterUploaded} : ''} </p>
             </div>
         </div>
         )
-}
+
 
 function validateName(name){
     if(name.length > 0){
@@ -117,7 +120,28 @@ function validateImageUpload(imageUpload){
     }
 }
 
+function upload(name, age, loves, favoriteFood) {
 
+    let myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+
+    let raw = JSON.stringify({'name': name,'age': age,'favFood': favoriteFood,'loves': loves});
+
+    let request = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch('/api/hamsters', request)
+    .then(response => response.text())
+    .then(result => {console.log(result)})
+    //setHamsterUploaded(result.hamster)
+    .catch(error => console.log('error', error));
+}
+
+}
 export default Upload ;
 
 // Här ska det finnas ett formulär för att fylla i all information om en tävlande hamster som databasen behöver. All information ska valideras så att den är informativ och användarvänlig. Man behöver inte ladda upp en riktig bild i grundversionen.

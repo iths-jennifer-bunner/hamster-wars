@@ -67,7 +67,33 @@ router.put('/:id/result', async (req, res) => {
 })
 
 //Post hamster
+router.post("/", async (req, res) => {
+    try {
+        let hamsters = [];
+        let snapShot = await db.collection('hamsters').get();
 
+        snapShot.forEach(doc => {
+            hamsters.push(doc.data());
+        })
+
+        db.collection('hamsters').doc().set({
+            id: hamsters.length+1,
+            name: req.body.name,
+            age: req.body.age,
+            favFood: req.body.favFood,
+            loves: req.body.loves,
+            imgName: `hamster-${hamsters.length+1}.jpg`,
+            wins: 0,
+            defeats: 0,
+            games: 0
+        });
+        res.send({ msg: 'hamster uploaded!' });
+    }
+    catch(err) {
+        res.status(500).send(err);
+    }
+
+})
 
 
 

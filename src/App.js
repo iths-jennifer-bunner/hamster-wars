@@ -5,6 +5,8 @@ import Start from './components/Start';
 import Battle from './components/Battle';
 import Stats from './components/Stats';
 import Upload from './components/Upload';
+import Result from './components/Result'
+import Matchup from './components/Matchup'
 
 console.log('App.js körs');
 
@@ -30,6 +32,8 @@ function App() {
                     <Route path='/battle'><Battle /></Route>
                     <Route path='/stats'><Stats /></Route>
                     <Route path='/upload'><Upload /></Route>
+                    <Route path='/result'><Result /></Route>
+                    <Route path='/matchup'><Matchup /></Route>
                     <Route path='/'><Start /></Route>
                 </Switch>
             </main>
