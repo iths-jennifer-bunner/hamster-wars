@@ -1,11 +1,12 @@
 //ingång till api
 const express = require('express');
 const app = express();
+let path = require('path');
 
 const port = process.env.PORT || 2048;
 
 app.use(express.json())
-app.use(express.static('public'))
+//app.use(express.static('public'))
 app.use(express.static(__dirname + '/../build'))
 
 // let init = require('./initdb.js')
@@ -21,7 +22,12 @@ app.use('/api/charts', chartsRoute)
 app.use('/api/games', gamesRoute)
 app.use('/api/stats', statsRoute)
 app.use('/api/assets', assetsRoute)
-
+app.get('*', (req, res) => {
+    // console.log('index sendfile', __dirname + '/../build/index.html');
+    
+    let filePath = path.resolve('./build/index.html');
+    res.sendFile(filePath);
+})
 
 app.listen(port, () => {
     console.log('Server is up and running on: ', port);

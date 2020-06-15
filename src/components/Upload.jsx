@@ -22,6 +22,7 @@ const Upload = () => {
 
     let formIsValid = nameTouched && ageTouched && favoriteFoodTouched && lovesTouched && imageUploadTouched && (nameError === '') && (ageError === '') && (favoriteFoodError === '') && (lovesError === '') && (imageUploadError === '')
 
+
     return(
         <div>
             <h3>Upload your own fab hamster</h3>
@@ -67,6 +68,7 @@ const Upload = () => {
             </div>
             <div className='form-group'>
                 <button disabled ={!formIsValid}>
+                {/* onClick={() => (formIsValid ? uploadHamster() : null)} */}
                     Upload hamster
                 </button>
             </div>
@@ -114,8 +116,6 @@ function validateImageUpload(imageUpload){
         return['invalid', `must contain correct file name`]
     }
 }
-
-
 
 
 export default Upload ;
