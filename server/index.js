@@ -25,8 +25,8 @@ app.use('/api/stats', statsRoute)
 app.use('/api/assets', assetsRoute)
 
 app.get('*', (req, res) => {
-    // let filePath = path.resolve('./build/index.html');
-    let filePath = path.join(__dirname + '../build/index.html');
+    let filePath = path.resolve('./build/index.html');
+    // let filePath = path.join(__dirname + '../build/index.html');
     res.sendFile(filePath);
 })
 
