@@ -22,9 +22,6 @@ app.use('/api/games', gamesRoute)
 app.use('/api/stats', statsRoute)
 app.use('/api/assets', assetsRoute)
 
-app.get('*', function(req, res){
-    res.sendFile(path.join(__dirname + '/../build/index.html'));
-});
 
 app.listen(port, () => {
     console.log('Server is up and running on: ', port);
