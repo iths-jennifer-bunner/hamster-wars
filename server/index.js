@@ -1,7 +1,8 @@
 //ingång till api
 const express = require('express');
-const app = express();
 let path = require('path');
+const app = express();
+
 
 const port = process.env.PORT || 2048;
 
@@ -22,10 +23,10 @@ app.use('/api/charts', chartsRoute)
 app.use('/api/games', gamesRoute)
 app.use('/api/stats', statsRoute)
 app.use('/api/assets', assetsRoute)
+
 app.get('*', (req, res) => {
-    // console.log('index sendfile', __dirname + '/../build/index.html');
-    
-    let filePath = path.resolve('./build/index.html');
+    let filePath = path.join('./build/index.html');
+    // let filePath = path.resolve('./build/index.html');
     res.sendFile(filePath);
 })
 
