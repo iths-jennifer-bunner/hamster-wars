@@ -116,6 +116,8 @@ function validateImageUpload(imageUpload){
 }
 
 
+
+
 export default Upload ;
 
 // Här ska det finnas ett formulär för att fylla i all information om en tävlande hamster som databasen behöver. All information ska valideras så att den är informativ och användarvänlig. Man behöver inte ladda upp en riktig bild i grundversionen.

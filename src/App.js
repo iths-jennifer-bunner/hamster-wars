@@ -6,6 +6,9 @@ import Battle from './components/Battle';
 import Stats from './components/Stats';
 import Upload from './components/Upload';
 
+console.log('App.js körs');
+
+
 function App() {
     return (
         <Router>

@@ -1,27 +1,41 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+
+console.log('sidan battle körs');
+
 
 const Battle = () => {
     const [hamster1, setHamster1] = useState(null);
     const [hamster2, setHamster2] = useState(null);
     const [click1, setClick1] =useState(false)
     const [click2, setClick2] =useState(false)
+    // const [newGame, setNewGame] =useState(false)
 
-    
-    const handleClick1 = async () => {
-        let hamster = await getHamsters();
-        setHamster1(hamster);
-    }
-    const handleClick2 = async () => {
-        let hamster = await getHamsters();
-        setHamster2(hamster);
-    }
+    useEffect(() => { 
+        async function handleClick1() {
+                let hamster = await getHamsters();
+                setHamster1(hamster);
+                console.log('setHamster1:',setHamster1);
+                
+            }
+            handleClick1()
+            console.log('handle click 1 körs');
+            
+    }, [])
+
+    useEffect(() => { 
+        async function handleClick2() {
+                let hamster = await getHamsters();
+                setHamster2(hamster);
+                
+            }
+            handleClick2()
+            
+    }, [])
     
     return(
         <div>
             <p>Click the image that has the most fab hamster</p>
-            <button onClick={handleClick1}>Contestant 1</button>
-            <button onClick={handleClick2}>Contestant 2</button>
             
             { hamster1 ? <div > <StyledImg src={"./hamsters/" + hamster1.imgName} alt="A hamster"  onClick={() => setClick1(true)}/>
             Contestant 1: is {hamster1.name}, {hamster1.age} years young, and likes {hamster1.loves} and eats {hamster1.favFood}.</div> : null }
@@ -36,6 +50,7 @@ const Battle = () => {
         </div>
     )
 }
+
 const StyledImg= styled.img`
     width: 15em;
     cursor: pointer;

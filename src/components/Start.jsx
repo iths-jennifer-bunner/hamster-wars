@@ -1,5 +1,8 @@
 import React from 'react';
 
+console.log('Sidan start körs');
+
+
 const Start= () => (
     <div>
         <h3>Welcome to the fab hamster wars</h3>
