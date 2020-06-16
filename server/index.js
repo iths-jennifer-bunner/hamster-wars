@@ -31,9 +31,10 @@ app.use('/api/assets', assetsRoute)
 //     // let filePath = path.join(__dirname ,'/../build', 'index.html');
 //     res.sendFile(filePath);
 // })
-app.get('/*', (req,res) =>{
-    res.sendFile(path.join(__dirname+'/../build/index.html'));
+app.get('*', (req,res) =>{
+    res.sendFile(path.join(__dirname+'./build/index.html'));
 });
+
 app.listen(port, () => {
     console.log('Server is up and running on: ', port);
     
