@@ -10,32 +10,15 @@ const Battle = () => {
     
     const [hamster1, setHamster1] = useState(null);
     const [hamster2, setHamster2] = useState(null);
-    // const [click1, setClick1] =useState(false)
-    // const [click2, setClick2] =useState(false)
     const [newGame, setNewGame] =useState(false)
     const [winner, setWinner] =useState(null)
-
-    // useEffect(() => { 
-    //     async function handleClick1() {
-    //             let hamster = await getHamsters();
-    //             setHamster1(hamster);                
-    //         }
-    //         handleClick1()            
-    // }, [])
-
-    // useEffect(() => { 
-    //     async function handleClick2() {
-    //             let hamster = await getHamsters();
-    //             setHamster2(hamster);                
-    //         }
-    //         handleClick2()            
-    // }, [])
     useEffect(() => {
 console.log('useeffekt körs');
 
         async function getRandomHamster() {
             let response = await fetch("/api/hamsters/random");
             const randomHamster1 = await response.json();
+            console.log(response);
             console.log('getRandomhamster körs');
             
 
@@ -57,6 +40,7 @@ console.log('useeffekt körs');
 console.log('körs use effekt?');
 
     }, [newGame])
+
     function handleClick(winner, looser) {
         console.log('handleclick körs');
         
@@ -69,29 +53,26 @@ console.log('körs use effekt?');
         updateGames(winner.id, looser.id);
     }
     return(
-        <div>
-            <p>Click the image that has the most fab hamster</p>
-            <article>
-                        <img src={"./hamsters/" + hamster1.imgName} alt="Cute hamster"
-                            onClick={() => handleClick(hamster1, hamster2)}/>
-                    <p>{hamster1.name}</p>
-                </article>
+        <div>{hamster1 && hamster2 ? (
+            <div>
+                <p>Click the image that has the most fab hamster</p>
                 <article>
-                        <img src={"./hamsters/" + hamster2.imgName} alt="Cute hamster"
-                            onClick={() => handleClick(hamster2, hamster1)}/>
-                    <p>{hamster2.name}</p>
-                </article>
-            {/* { hamster1 ? <div > <StyledImg src={"./hamsters/" + hamster1.imgName} alt="A hamster"  onClick={() => setClick1(true)}/>
-            Contestant 1: is {hamster1.name}, {hamster1.age} years young, and likes {hamster1.loves} and eats {hamster1.favFood}.</div> : null }
+                            <img src={"./hamsters/" + hamster1.imgName} alt="Cute hamster"
+                                onClick={() => handleClick(hamster1, hamster2)}/>
+                        <p>{hamster1.name}</p>
+                    </article>
+                    <article>
+                            <img src={"./hamsters/" + hamster2.imgName} alt="Cute hamster"
+                                onClick={() => handleClick(hamster2, hamster1)}/>
+                        <p>{hamster2.name}</p>
+                    </article>
 
-            { hamster2 ? <div > <StyledImg src={"./hamsters/" + hamster2.imgName} alt="A hamster" onClick={() => setClick2(true)}/>
-            Contestant 2: is {hamster2.name}, {hamster2.age} years young, and likes {hamster2.loves} and eats {hamster2.favFood}.</div> : null } */}
-
-            <DeclareWinner>
-            {winner !== null ? <Matchup winner={winner} />: null}
-                {/* {click1=== true ? hamster1.name+ " is the winner!!!" : ''}
-                {click2=== true ? hamster2.name+' is the winner!!!' : ''} */}
-            </DeclareWinner>
+                <DeclareWinner>
+                {winner !== null ? <Matchup winner={winner} />: null}
+                </DeclareWinner>
+            </div>
+            ) :
+            <h2>Loading</h2>}
         </div>
     )
 }
@@ -163,20 +144,6 @@ function updateWinner(id) {
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
     }
-
-// async function getHamsters() {
-//     let baseUrl = '/api';
-//     try {
-//         const response = await fetch(baseUrl + '/hamsters/random');
-//         const hamster = await response.json(); 
-//         return hamster;
-//     } catch (e) {
-//         console.log('Fetch failed because', e);
-//         return null;
-//     }
-// }
-
-
 
 export default Battle;
 

@@ -1,20 +1,23 @@
 import React, {useState, useEffect} from 'react';
 
+console.log('sidan stats körs');
+
 const Stats= () => {
     
     const [topHamsters, setTopHamsters] = useState([]);
     const [bottomHamsters, setBottomHamsters] = useState([]);
 
+
     useEffect(() => {
         async function getTopHamsters() {
-            const response = await fetch("api/charts/top");
+            const response = await fetch("/api/charts/top");
             const topFive = await response.json();
             setTopHamsters(topFive.topHamsters);
         }
         getTopHamsters();
 
         async function getBottomHamsters() {
-            const response = await fetch("api/charts/bottom");
+            const response = await fetch("/api/charts/bottom");
             const bottomFive = await response.json();
             setBottomHamsters(bottomFive.bottomHamsters);
         }

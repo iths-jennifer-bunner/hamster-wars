@@ -24,6 +24,11 @@ const Upload = () => {
 
     let formIsValid = nameTouched && ageTouched && favoriteFoodTouched && lovesTouched && imageUploadTouched && (nameError === '') && (ageError === '') && (favoriteFoodError === '') && (lovesError === '') && (imageUploadError === '')
 
+    const imageInputChanged = (e) => {
+        setImageUpload(e.target.value);
+        setImageUploadTouched(true);
+    }
+
 
     return(
         <div>
@@ -63,8 +68,8 @@ const Upload = () => {
             <div className='form-group'>
                 <label>Upload image:</label>
                     <input type='text' placeholder='image file '
-                    onChange={e => setImageUpload(e.target.value)}
-                    onBlur={() => setImageUploadTouched(true)}
+                    onChange={e => imageInputChanged(e)}
+                    // onBlur={() => setImageUploadTouched(true)}
                     className={imageUploadClass}/>
                     <div className='error'>{imageUploadError}</div>
             </div>
