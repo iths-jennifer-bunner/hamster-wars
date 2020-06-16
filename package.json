@@ -13,6 +13,7 @@
     "firebase": "^7.15.1",
     "firebase-admin": "^8.12.1",
     "firestore": "^1.1.6",
+    "heroku": "^7.42.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
