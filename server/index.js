@@ -16,17 +16,19 @@ const chartsRoute = require('./routes/charts')
 const gamesRoute = require('./routes/games')
 const statsRoute = require('./routes/stats')
 const assetsRoute = require('./routes/assets')
+const imagesRoute = require('./routes/images')
 
 app.use('/api/hamsters', hamstersRoute)
 app.use('/api/charts', chartsRoute)
 app.use('/api/games', gamesRoute)
 app.use('/api/stats', statsRoute)
 app.use('/api/assets', assetsRoute)
+app.use('/api/images', imagesRoute)
 
 app.get('*', (req, res) => {
-    // let filePath = path.resolve('./build/index.html');
-    app.use(express.static(path.join(__dirname, '/../build')))
-    let filePath = path.join(__dirname ,'/../build', 'index.html');
+    let filePath = path.resolve('./build/index.html');
+    // app.use(express.static(path.join(__dirname, '/../build')))
+    // let filePath = path.join(__dirname ,'/../build', 'index.html');
     res.sendFile(filePath);
 })
 

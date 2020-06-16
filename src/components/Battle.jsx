@@ -72,12 +72,12 @@ console.log('körs use effekt?');
         <div>
             <p>Click the image that has the most fab hamster</p>
             <article>
-                        <img src={"./hamsters/" + hamster1.imgName} alt="Cute hamster"
+                        <img src={"/api/images/" + hamster1.imgName} alt="Cute hamster"
                             onClick={() => handleClick(hamster1, hamster2)}/>
                     <p>{hamster1.name}</p>
                 </article>
                 <article>
-                        <img src={"./hamsters/" + hamster2.imgName} alt="Cute hamster"
+                        <img src={"api/images/" + hamster2.imgName} alt="Cute hamster"
                             onClick={() => handleClick(hamster2, hamster1)}/>
                     <p>{hamster2.name}</p>
                 </article>

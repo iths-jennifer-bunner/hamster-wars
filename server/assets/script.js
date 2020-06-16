@@ -1,3 +1,5 @@
+const { Router } = require('express');
+const router = new Router();
 
   // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -11,3 +13,12 @@ var firebaseConfig = {
 };
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+//Uppladdning av bilder till firebase storage.
+document.querySelector("button").addEventListener("click", (e) => {
+     e.preventDefault(); //Förhindrar att sidan laddas om vid knapptryck.
+
+    let file = document.querySelector("#file").files[0];
+    let storageRef = firebase.storage().ref("hamsters/" + file.name);
+    storageRef.put(file);
+})
