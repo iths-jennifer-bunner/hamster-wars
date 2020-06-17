@@ -66,13 +66,13 @@ const Battle = ({match}) => {
                         <StyledImg src={"/hamsters/" + hamster1.imgName} alt="Fab hamster"
                             onClick={() => handleClick(hamster1, hamster2)} 
                             />
-                            <p>{hamster1.name} is {hamster1.age} and loves to {hamster1.loves} and prefers to eat {hamster1.favFood}</p>
+                            <p>{hamster1.name} is {hamster1.age} years and loves to {hamster1.loves} and prefers to eat {hamster1.favFood}</p>
                 </article>
                 <article>
                         <StyledImg src={"/hamsters/" + hamster2.imgName} alt="Fab hamster"
                             onClick={() => handleClick(hamster2, hamster1)}
                         />
-                        <p>{hamster2.name} is {hamster2.age} and loves to {hamster2.loves} and prefers to eat {hamster2.favFood}</p>
+                        <p>{hamster2.name} is {hamster2.age} years and loves to {hamster2.loves} and prefers to eat {hamster2.favFood}</p>
                 </article>
 
                 <div>

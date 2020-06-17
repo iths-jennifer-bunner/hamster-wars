@@ -33,9 +33,16 @@ function App() {
                     <Route path='/'><Start /></Route>
                 </Switch>
             </main>
-            <footer></footer>
+            <footer onClick={() => scrollUp()}><p>Back to top</p></footer>
         </Router>
     );
+}
+
+function scrollUp(){
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    })
 }
 
 export default App;

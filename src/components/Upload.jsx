@@ -78,7 +78,7 @@ const Upload = () => {
             </div>
             <div className='form-group'>
                 <button disabled ={!formIsValid}
-                onClick={() => upload(name,age,loves,favoriteFood), () => setHamsterUploaded(`Your fab hamster${name} is ready to battle!`)}>
+                onClick={() => upload(name,age,loves,favoriteFood), () => setHamsterUploaded(`Your fab hamster ${name} is ready to battle!`)}>
                     Upload hamster
                 </button>
                 <p className={hamsterUploaded ? '' : 'hide' }>{hamsterUploaded}</p>

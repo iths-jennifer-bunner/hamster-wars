@@ -38,13 +38,24 @@ const Matchup = ({match}) => {
     <div> {winner ? (
         <div>
             <h3>Winner is:</h3>
-            <p key={ winner.id +winner.name}>{winner.name} and he or she is {winner.age} and loves {winner.loves}</p>
+            <p key={ winner.id +winner.name}>{winner.name} and he or she is {winner.age} years and loves {winner.loves}</p>
             <StyledImg src={'/hamsters/' + winner.imgName} alt='hamster'></StyledImg><br />
+            {/* <StyledButton onClick={() => handleClick()}
+            >New Game</StyledButton>
+            {click === true ? <Battle /> : false} */}
+        </div>
+        ) : <h1>Loading...</h1>}        
+        <div> {looser ? (
+        <div>
+            <h3>Lost against:</h3>
+            <p key={ looser.id +looser.name}>{looser.name} and he or she is {looser.age} years and loves {looser.loves}</p>
+            <StyledImg src={'/hamsters/' + looser.imgName} alt='hamster'></StyledImg><br />
             <StyledButton onClick={() => handleClick()}
             >New Game</StyledButton>
             {click === true ? <Battle /> : false}
         </div>
-    ) : <h1>Loading...</h1>}        
+        ) : ''}        
+    </div>
     </div>
     )
 }
