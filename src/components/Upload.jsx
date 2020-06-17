@@ -70,7 +70,7 @@ const Upload = () => {
             </div>
             <div className='form-group'>
                 <label>Upload image:</label>
-                    <input type='text' placeholder='image file '
+                    <input type='text' placeholder='ex. hamster-1.jpg'
                     onChange={e => imageInputChanged(e)}
                     // onBlur={() => setImageUploadTouched(true)}
                     className={imageUploadClass}/>

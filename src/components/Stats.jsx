@@ -1,5 +1,6 @@
 //Css:a....
 import React, {useState, useEffect} from 'react';
+import styled from 'styled-components';
 
 const Stats= () => {
     
@@ -11,18 +12,14 @@ const Stats= () => {
         async function getTopHamsters() {
             const response = await fetch("/api/charts/top");
             const topFive = await response.json();            
-            setTopHamsters(topFive);
-            console.log('top:', topFive);
-            console.log(setTopHamsters);
+            setTopHamsters(topFive.topHamsters);
         }
         getTopHamsters();
 
         async function getBottomHamsters() {
             const response = await fetch("/api/charts/bottom");
             const bottomFive = await response.json();
-            setBottomHamsters(bottomFive);
-            console.log('bottom' ,bottomFive);
-            console.log(setBottomHamsters);
+            setBottomHamsters(bottomFive.bottomHamsters);
             
         }
         getBottomHamsters();
@@ -42,10 +39,10 @@ const Stats= () => {
                 {topHamsters.map(hamster => (
                     <section key={hamster.id}>
                         <article>
-                            <h5>{hamster.name}</h5>
+                            <h3>{hamster.name}</h3>
                             <p>Wins: {hamster.wins}</p>
                         </article>
-                        {/* <img src={'./hamsters/' + hamster.imgName} alt='hamster'></img> */}
+                        <StyledImg src={'./hamsters/' + hamster.imgName} alt='hamster'></StyledImg>
                     </section>
                 ))}
             </article>
@@ -54,20 +51,26 @@ const Stats= () => {
                 {bottomHamsters.map(hamster => (
                     <section key={hamster.id}>
                         <article>
-                            <h5>{hamster.name}</h5>
+                            <h3>{hamster.name}</h3>
                             <p>Defeats: {hamster.defeats}</p>
                         </article>
-                        {/* <img src={'./hamsters/' + hamster.imgName} alt='hamster'></img> */}
+                        <StyledImg src={'./hamsters/' + hamster.imgName} alt='hamster'></StyledImg>
                     </section>
                 ))}
             </article>
             <article >
-                <p>Total games</p>
-                <h2>{totalGames.totalGames}</h2>
+                <h1>Total games:</h1>
+                <h3>{totalGames.totalGames} games have been played!</h3>
             </article>
         </div>
     )
 }
+const StyledImg= styled.img`
+    width: 15em;
+    cursor: pointer;
+    transition: transform 0.7s ease-out;
+`
+
 
 export default Stats;
 

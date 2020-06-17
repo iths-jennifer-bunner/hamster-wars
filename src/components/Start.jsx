@@ -3,7 +3,7 @@ import React from 'react';
 const Start= () => (
     <div>
         <h3>Welcome to the fab hamster wars</h3>
-        <p>Here can you vote on fab hamsters and upload your own fab hamster to battle</p>
+        <p>Here can you vote on fab hamsters and upload your own fab hamster to battle.</p>
     </div>
 )
 export default Start;

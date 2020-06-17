@@ -5,7 +5,7 @@ import Start from './components/Start';
 import Battle from './components/Battle';
 import Stats from './components/Stats';
 import Upload from './components/Upload';
-import Result from './components/Result'
+// import Result from './components/Result'
 import Matchup from './components/Matchup'
 
 function App() {
@@ -30,12 +30,12 @@ function App() {
                     <Route path='/battle' ><Battle /></Route>
                     <Route path='/stats'><Stats /></Route>
                     <Route path='/upload'><Upload /></Route>
-                    <Route path='/result'><Result /></Route>
+                    {/* <Route path='/result'><Result /></Route> */}
                     <Route path='/matchup/:winner/:looser'><Matchup /></Route>
                     <Route path='/'><Start /></Route>
                 </Switch>
             </main>
-            <footer>footer...</footer>
+            <footer></footer>
         </Router>
     );
 }

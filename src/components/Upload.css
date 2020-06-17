@@ -3,6 +3,7 @@
     padding: 0.7em;
     font-size: 1.2em;
     margin-bottom: 0.5em;
+    
 }
 
 .form-group label{
@@ -17,6 +18,7 @@
     box-sizing: border-box;
     font-size: 0.9em;
     border-radius: 5px;
+    border:2px solid #F25D27;
 }
 
 input.valid{
@@ -37,12 +39,16 @@ button{
     padding: 0.3em 1.5em;
     border: none;
     border-radius: 5px;
-    background-color: #FEEEEE;
+    background-color: #17736A;
     color: black;
     font-size: 1em;
 }
 
 button:hover{
     cursor: pointer;
+    transform: scale(1.1, 1.1);
 }
 /* Animation på button */
+button{
+    background-color:#17736A;
+}
