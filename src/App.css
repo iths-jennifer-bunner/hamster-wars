@@ -1,4 +1,4 @@
-
+/* ---------------MOBILE FIRST-------------------- */
 .App-header {
     background-color: #F28D35;
     display: flex;
@@ -9,7 +9,7 @@
     color: black;
 }
 main{
-    padding: 3em 12em 3em 12em;
+    padding: 3em 3em 3em 3em;
 }
 
 header nav{
@@ -46,6 +46,14 @@ p {
 }
 h3{
     font-family: 'Raleway', sans-serif; 
+}
+
+/* ---------------LARGER TABLETS AND DESKTOP------------------------ */
+
+@media only screen and (min-width: 600px){
+    main{
+        padding: 3em 15em 3em 15em;
+    }
 }
 
 
