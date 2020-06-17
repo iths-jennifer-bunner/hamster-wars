@@ -7,7 +7,7 @@ const port = process.env.PORT || 2048;
 
 app.use(express.json())
 //app.use(express.static('public'))
-// app.use(express.static(__dirname + '/../build'))
+app.use(express.static(__dirname + '/../build'))
 
 // let init = require('./initdb.js')
 

@@ -1,5 +1,8 @@
+//Styla....(kolla sista valideringen för image)
+
 import React, {useState} from 'react';
 import './Upload.css'
+
 
 const Upload = () => {
     const [hamsterUploaded, setHamsterUploaded] = useState('');

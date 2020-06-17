@@ -6,45 +6,63 @@ const Stats= () => {
     
     const [topHamsters, setTopHamsters] = useState([]);
     const [bottomHamsters, setBottomHamsters] = useState([]);
-
+    const [totalGames, setTotalGames] = useState('');
 
     useEffect(() => {
         async function getTopHamsters() {
             const response = await fetch("/api/charts/top");
             const topFive = await response.json();
-            setTopHamsters(topFive.topHamsters);
+            console.log(topFive);
+            
+            setTopHamsters(topFive);
         }
         getTopHamsters();
 
         async function getBottomHamsters() {
             const response = await fetch("/api/charts/bottom");
             const bottomFive = await response.json();
-            setBottomHamsters(bottomFive.bottomHamsters);
+            setBottomHamsters(bottomFive);
         }
         getBottomHamsters();
+
+        async function getTotalGames() {
+            const response = await fetch("api/stats/total");
+            const games = await response.json();
+            setTotalGames(games);
+        }
+        getTotalGames();
     }, []);
+console.log(topHamsters);
 
     return(
         <div>
             <article>
                 <h1>Top 5 hamsters!</h1>
                 {topHamsters.map(hamster => (
-                    <section>
-                        <h5>{hamster.name}</h5>
-                        <p>Wins: {hamster.wins}</p>
-                        <img src={'./hamsters/' + hamster.imgName} alt='hamster'></img>
+                    <section key={hamster.id}>
+                        <article>
+                            <h5>{hamster.name}</h5>
+                            <p>Wins: {hamster.wins}</p>
+                        </article>
+                        {/* <img src={'./hamsters/' + hamster.imgName} alt='hamster'></img> */}
                     </section>
                 ))}
             </article>
             <article>
                 <h1>Bottom 5 hamsters!</h1>
                 {bottomHamsters.map(hamster => (
-                    <section>
-                        <h5>{hamster.name}</h5>
-                        <p>Defeats: {hamster.defeats}</p>
-                        <img src={'./hamsters/' + hamster.imgName} alt='hamster'></img>
+                    <section key={hamster.id}>
+                        <article>
+                            <h5>{hamster.name}</h5>
+                            <p>Defeats: {hamster.defeats}</p>
+                        </article>
+                        {/* <img src={'./hamsters/' + hamster.imgName} alt='hamster'></img> */}
                     </section>
                 ))}
+            </article>
+            <article >
+                <p>Total games</p>
+                <h2>{totalGames.totalGames}</h2>
             </article>
         </div>
     )

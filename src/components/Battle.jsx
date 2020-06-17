@@ -1,31 +1,49 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import { useHistory, withRouter } from "react-router-dom";
 import Matchup from './Matchup';
+// import { Redirect } from "react-router-dom";
 
-console.log('sidan battle körs');
+// history.push({
+//     pathname: `/matchup/${hamster.id}/${hamster2.id}/`,
+//     state: { winner: hamster, loser: hamster2 },
+// });sätt hamster som en param
 
-
-const Battle = () => {
+const Battle = ({match}) => {
     console.log('funktion battle körs');
-    
+    let history = useHistory();
     const [hamster1, setHamster1] = useState(null);
     const [hamster2, setHamster2] = useState(null);
     const [newGame, setNewGame] =useState(false)
     const [winner, setWinner] =useState(null)
-    useEffect(() => {
-console.log('useeffekt körs');
 
+    useEffect(() => {
+
+        if(match){
+
+            async function getHamsterById() {
+                let response = await fetch(`/api/hamsters/${match.params.id1}`);
+                const hamster1 = await response.json();
+                console.log(hamster1);
+
+                response = await fetch(`/api/hamsters/${match.params.id2}`);
+                const hamster2 = await response.json();
+                console.log(hamster2)
+
+                setHamster1(hamster1.hamster);
+                setHamster2(hamster2.hamster);
+        }
+            getHamsterById();
+        }else{
+            
         async function getRandomHamster() {
             let response = await fetch("/api/hamsters/random");
             const randomHamster1 = await response.json();
             console.log(response);
-            console.log('getRandomhamster körs');
             
-
             response = await fetch("/api/hamsters/random");
             const randomHamster2 = await response.json();
 
-            //Kanske fungerar
             if(randomHamster1.id === randomHamster2.id) {
                 console.log("FOUND SAME!")
                 newGame ? setNewGame(false) : setNewGame(true);
@@ -35,18 +53,17 @@ console.log('useeffekt körs');
                 setHamster2(randomHamster2);
             }
         }
-
         getRandomHamster();
-console.log('körs use effekt?');
-
+        }
     }, [newGame])
 
-    function handleClick(winner, looser) {
-        console.log('handleclick körs');
-        
+    function handleClick(winner, looser) {        
         console.log(winner.id);
         console.log(looser.id);
         setWinner(winner);
+        history.push({
+        pathname: `/matchup/`,
+        state: { winner: winner, loser: looser}, });
         newGame ? setNewGame(false) : setNewGame(true);
         updateWinner(winner.id);
         updateLooser(looser.id);
@@ -68,7 +85,11 @@ console.log('körs use effekt?');
                     </article>
 
                 <DeclareWinner>
-                {winner !== null ? <Matchup winner={winner} />: null}
+                    {winner !== null ? <Matchup winner={winner}/> : null}
+                {/* {winner !== null ? <Redirect to={{
+                    pathname: "/matchup",
+                    state: {winner: winner}
+                }} />: null} */}
                 </DeclareWinner>
             </div>
             ) :
@@ -145,7 +166,8 @@ function updateWinner(id) {
         .catch(error => console.log('error', error));
     }
 
-export default Battle;
+// export default Battle;
+export default withRouter(Battle);//Now to get the history prop inside our component, we need wrap our component with withRouter while exporting it.
 
 // Två hamstrar ställs mot varandra. Bara en kan vinna. Om det finns parametrar i URL ska de användas, annars två slumpade hamstrar (se routes ovan). Användaren röstar genom att klicka på den bild man tycker bäst om. När man röstat ska resultatet visas.
 
