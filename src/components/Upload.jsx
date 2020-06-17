@@ -78,14 +78,13 @@ const Upload = () => {
             </div>
             <div className='form-group'>
                 <button disabled ={!formIsValid}
-                onClick={() => upload(name,age,loves,favoriteFood)}>
+                onClick={() => upload(name,age,loves,favoriteFood), () => setHamsterUploaded(`Your fab hamster${name} is ready to battle!`)}>
                     Upload hamster
                 </button>
-                <p>{hamsterUploaded ? {setHamsterUploaded} : ''} </p>
+                <p className={hamsterUploaded ? '' : 'hide' }>{hamsterUploaded}</p>
             </div>
         </div>
         )
-
 
 function validateName(name){
     if(name.length > 0){

@@ -71,6 +71,11 @@ const StyledImg= styled.img`
     transition: transform 0.7s ease-out;
     border-radius: 5px;
 `
+// const StyledImgGrid= styled.section`
+// display: grid;
+// grid-template-columns: 1fr 1fr;
+// grid-gap: 2em;
+// `
 
 
 export default Stats;

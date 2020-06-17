@@ -63,5 +63,6 @@ const StyledButton= styled.button`
     color: black;
     font-size: 1em;
     margin-top: 1em;
+    font-family: 'Raleway', sans-serif;
 `
 export default withRouter(Matchup);

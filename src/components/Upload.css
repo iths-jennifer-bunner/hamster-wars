@@ -42,10 +42,14 @@ button{
     background-color: #17736A;
     color: black;
     font-size: 1em;
+    font-family: 'Raleway', sans-serif;
 }
 
 button:hover{
     cursor: pointer;
     transform: scale(1.1, 1.1);
 }
-/* Animation på button */
+.hide {
+    display: none;
+}
+
