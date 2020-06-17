@@ -69,6 +69,7 @@ const StyledImg= styled.img`
     width: 15em;
     cursor: pointer;
     transition: transform 0.7s ease-out;
+    border-radius: 5px;
 `
 
 

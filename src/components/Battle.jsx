@@ -66,13 +66,13 @@ const Battle = ({match}) => {
                         <StyledImg src={"/hamsters/" + hamster1.imgName} alt="Fab hamster"
                             onClick={() => handleClick(hamster1, hamster2)} 
                             />
-                            <p>{hamster1.name} is {hamster2.age} and loves to {hamster2.loves} and prefers to eat {hamster2.favFood}</p>
+                            <p>{hamster1.name} is {hamster1.age} and loves to {hamster1.loves} and prefers to eat {hamster1.favFood}</p>
                 </article>
                 <article>
                         <StyledImg src={"/hamsters/" + hamster2.imgName} alt="Fab hamster"
                             onClick={() => handleClick(hamster2, hamster1)}
                         />
-                        <p>{hamster1.name} is {hamster2.age} and loves to {hamster2.loves} and prefers to eat {hamster2.favFood}</p>
+                        <p>{hamster2.name} is {hamster2.age} and loves to {hamster2.loves} and prefers to eat {hamster2.favFood}</p>
                 </article>
 
                 <div>
@@ -146,18 +146,18 @@ function updateWinner(id) {
         .catch(error => console.log('error', error));
     }
 
-    
+
 const StyledImg= styled.img`
     width: 15em;
     cursor: pointer;
     transition: transform 0.7s ease-out;
+    border-radius: 5px;
 
     :hover{
         transform: translateY(-0.3em) rotateZ(1deg);
     }
 `
 
-// export default Battle;
 export default withRouter(Battle);//Now to get the history prop inside our component, we need wrap our component with withRouter while exporting it.
 
 // Två hamstrar ställs mot varandra. Bara en kan vinna. Om det finns parametrar i URL ska de användas, annars två slumpade hamstrar (se routes ovan). Användaren röstar genom att klicka på den bild man tycker bäst om. När man röstat ska resultatet visas.

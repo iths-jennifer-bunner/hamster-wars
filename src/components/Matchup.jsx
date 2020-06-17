@@ -1,20 +1,15 @@
 import React from 'react';
 import {useState, useEffect } from 'react';
-import { withRouter} from "react-router-dom";
+import { withRouter, useHistory} from "react-router-dom";
 import styled from 'styled-components';
+import Battle from './Battle';
 
-console.log('Sidan   matchup körs');
-// this.props.location.state.winner;
-
-// componentDidMount(props) {
-//     console.log('winner',this.props.location.state.winner );
-    
-// }
 
 const Matchup = ({match}) => {
-    
+    let history = useHistory();
     const [winner, setWinner] = useState(null);
     const [looser, setLooser] = useState(null);
+    const [click, setClick] = useState(false)
 
     useEffect(() => {
         if (match) {
@@ -30,6 +25,14 @@ const Matchup = ({match}) => {
         }
     }, [match])
     console.log(looser);
+
+    function handleClick(){
+        setClick(true)
+        history.push({
+        pathname: `/battle/`,
+        state: { winner: winner, looser: looser },
+        })
+    }
     
     return(
     <div> {winner ? (
@@ -37,9 +40,11 @@ const Matchup = ({match}) => {
             <h3>Winner is:</h3>
             <p key={ winner.id +winner.name}>{winner.name} and he or she is {winner.age} and loves {winner.loves}</p>
             <StyledImg src={'/hamsters/' + winner.imgName} alt='hamster'></StyledImg><br />
-            <button>New Game</button>
+            <StyledButton onClick={() => handleClick()}
+            >New Game</StyledButton>
+            {click === true ? <Battle /> : false}
         </div>
-    ) : <h3>Loading...</h3>}        
+    ) : <h1>Loading...</h1>}        
     </div>
     )
 }
@@ -48,6 +53,15 @@ const StyledImg= styled.img`
     width: 15em;
     cursor: pointer;
     transition: transform 0.7s ease-out;
+    border-radius: 5px;
 `
-// export default Matchup;
+const StyledButton= styled.button`
+    padding: 0.3em 1.5em;
+    border: none;
+    border-radius: 5px;
+    background-color: #17736A;
+    color: black;
+    font-size: 1em;
+    margin-top: 1em;
+`
 export default withRouter(Matchup);
