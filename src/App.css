@@ -31,3 +31,19 @@ header nav a.active{
 footer{
     background-color: #FEEEEE;
 }
+
+img{
+    width: 15em;
+    cursor: pointer
+}
+/* font-family: 'Abril Fatface', cursive;
+font-family: 'Raleway', sans-serif; */
+h1{
+    font-family: 'Abril Fatface', cursive;
+}
+p{
+    font-family: 'Raleway', sans-serif; 
+}
+h3{
+    font-family: 'Raleway', sans-serif; 
+}

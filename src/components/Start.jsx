@@ -1,12 +1,9 @@
 import React from 'react';
 
-console.log('Sidan start körs');
-
-
 const Start= () => (
     <div>
         <h3>Welcome to the fab hamster wars</h3>
-        <p>More text will come.....fkdgjsöfhgösjdfhgjöfgh</p>
+        <p>Here can you vote on fab hamsters and upload your own fab hamster to battle</p>
     </div>
 )
 export default Start;

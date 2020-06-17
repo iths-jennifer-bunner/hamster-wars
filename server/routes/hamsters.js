@@ -42,6 +42,7 @@ router.get('/:id', async (req, res) => {
             hamster = doc.data()
         })
         res.send(hamster)
+        // res.send({hamster: hamster}); //???
     }
     catch(err){res.status(500).send(err)}
 })

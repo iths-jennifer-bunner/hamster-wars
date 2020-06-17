@@ -1,59 +1,52 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import { useHistory, withRouter } from "react-router-dom";
+import { useHistory, withRouter} from "react-router-dom";
 import Matchup from './Matchup';
 // import { Redirect } from "react-router-dom";
 
-// history.push({
-//     pathname: `/matchup/${hamster.id}/${hamster2.id}/`,
-//     state: { winner: hamster, loser: hamster2 },
-// });sätt hamster som en param
 
 const Battle = ({match}) => {
-    console.log('funktion battle körs');
+
     let history = useHistory();
     const [hamster1, setHamster1] = useState(null);
     const [hamster2, setHamster2] = useState(null);
-    const [newGame, setNewGame] =useState(false)
-    const [winner, setWinner] =useState(null)
+    const [newGame, setNewGame] =useState(false);
+    const [winner, setWinner] =useState(null);
 
     useEffect(() => {
 
-        if(match){
+        if(match.params.id1 && match.params.id2){
 
             async function getHamsterById() {
-                let response = await fetch(`/api/hamsters/${match.params.id1}`);
-                const hamster1 = await response.json();
-                console.log(hamster1);
-
+                console.log('getHamsterbyid körs');                
+                let response = await fetch(`/api/hamsters/${match.params.id1}`);                
+                const hamster1 = await response.json();                
                 response = await fetch(`/api/hamsters/${match.params.id2}`);
                 const hamster2 = await response.json();
-                console.log(hamster2)
-
-                setHamster1(hamster1.hamster);
-                setHamster2(hamster2.hamster);
-        }
-            getHamsterById();
-        }else{
-            
-        async function getRandomHamster() {
-            let response = await fetch("/api/hamsters/random");
-            const randomHamster1 = await response.json();
-            console.log(response);
-            
-            response = await fetch("/api/hamsters/random");
-            const randomHamster2 = await response.json();
-
-            if(randomHamster1.id === randomHamster2.id) {
-                console.log("FOUND SAME!")
-                newGame ? setNewGame(false) : setNewGame(true);
-
-            }else {
-                setHamster1(randomHamster1)
-                setHamster2(randomHamster2);
+                setHamster1(hamster1);
+                setHamster2(hamster2);
             }
-        }
-        getRandomHamster();
+                getHamsterById();
+        }else{
+
+            async function getRandomHamster() {
+                let response = await fetch("/api/hamsters/random");
+                const randomHamster1 = await response.json();
+                console.log(response);
+                
+                response = await fetch("/api/hamsters/random");
+                const randomHamster2 = await response.json();
+
+                if(randomHamster1.id === randomHamster2.id) {
+                    console.log("FOUND SAME!")
+                    newGame ? setNewGame(false) : setNewGame(true);
+
+                }else {
+                    setHamster1(randomHamster1)
+                    setHamster2(randomHamster2);
+                }
+            }
+            getRandomHamster();
         }
     }, [newGame])
 
@@ -61,26 +54,31 @@ const Battle = ({match}) => {
         console.log(winner.id);
         console.log(looser.id);
         setWinner(winner);
-        history.push({
-        pathname: `/matchup/`,
-        state: { winner: winner, loser: looser}, });
         newGame ? setNewGame(false) : setNewGame(true);
         updateWinner(winner.id);
         updateLooser(looser.id);
         updateGames(winner.id, looser.id);
+        history.push({
+            pathname: `/matchup/${winner.id}/${looser.id}/`,
+            state: { winner: winner, looser: looser },
+        })
     }
+
     return(
         <div>{hamster1 && hamster2 ? (
             <div>
                 <p>Click the image that has the most fab hamster</p>
                 <article>
-                            <img src={"./hamsters/" + hamster1.imgName} alt="Cute hamster"
-                                onClick={() => handleClick(hamster1, hamster2)}/>
-                        <p>{hamster1.name}</p>
+
+                            <img src={"/hamsters/" + hamster1.imgName} alt="Cute hamster"
+                                onClick={() => handleClick(hamster1, hamster2)} 
+                            />
+                            <p>{hamster1.name}</p>
                     </article>
                     <article>
-                            <img src={"./hamsters/" + hamster2.imgName} alt="Cute hamster"
-                                onClick={() => handleClick(hamster2, hamster1)}/>
+                            <img src={"/hamsters/" + hamster2.imgName} alt="Cute hamster"
+                                onClick={() => handleClick(hamster2, hamster1)}
+                            />
                         <p>{hamster2.name}</p>
                     </article>
 
@@ -108,7 +106,6 @@ const DeclareWinner= styled.div`
 `
 function updateWinner(id) {
     console.log('update winner körs');
-    
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 

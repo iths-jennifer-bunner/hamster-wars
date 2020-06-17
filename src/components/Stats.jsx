@@ -1,6 +1,5 @@
+//Css:a....
 import React, {useState, useEffect} from 'react';
-
-console.log('sidan stats körs');
 
 const Stats= () => {
     
@@ -11,10 +10,10 @@ const Stats= () => {
     useEffect(() => {
         async function getTopHamsters() {
             const response = await fetch("/api/charts/top");
-            const topFive = await response.json();
-            console.log(topFive);
-            
+            const topFive = await response.json();            
             setTopHamsters(topFive);
+            console.log('top:', topFive);
+            console.log(setTopHamsters);
         }
         getTopHamsters();
 
@@ -22,6 +21,9 @@ const Stats= () => {
             const response = await fetch("/api/charts/bottom");
             const bottomFive = await response.json();
             setBottomHamsters(bottomFive);
+            console.log('bottom' ,bottomFive);
+            console.log(setBottomHamsters);
+            
         }
         getBottomHamsters();
 
@@ -32,7 +34,6 @@ const Stats= () => {
         }
         getTotalGames();
     }, []);
-console.log(topHamsters);
 
     return(
         <div>

@@ -8,9 +8,6 @@ import Upload from './components/Upload';
 import Result from './components/Result'
 import Matchup from './components/Matchup'
 
-console.log('App.js körs');
-
-
 function App() {
     return (
         <Router>
@@ -29,11 +26,12 @@ function App() {
             </Switch>
             <main>
                 <Switch>
-                    <Route path='/battle'><Battle /></Route>
+                    <Route path='/battle/:id1/:id2' ><Battle /></Route>
+                    <Route path='/battle' ><Battle /></Route>
                     <Route path='/stats'><Stats /></Route>
                     <Route path='/upload'><Upload /></Route>
                     <Route path='/result'><Result /></Route>
-                    <Route path='/matchup'><Matchup /></Route>
+                    <Route path='/matchup/:winner/:looser'><Matchup /></Route>
                     <Route path='/'><Start /></Route>
                 </Switch>
             </main>
