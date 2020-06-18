@@ -16,21 +16,18 @@ const Catalouge = () => {
     return(
         
         <article>
-            {/* <section>
-                <h3>Here are all our fab hamsters</h3>
-                <p>Check in all our fab hamsters!</p>
-            </section> */}
             <StyledGrid>
                     { hamsters
                         ? hamsters.map(hamster => (
                             <div key={hamster.id}>
                                 <article>
-                                {hamster.name} gillar {hamster.loves} och äter helst {hamster.favFood}!
+                                {hamster.name} loves {hamster.loves} and prefers to eat {hamster.favFood}!
                                 </article>
-                                <StyledImg src={'/hamsters/' + hamster.imgName} alt='hamster'></StyledImg>
+                                <StyledImg src={'./hamsters/' + hamster.imgName} alt=' Fab hamster'></StyledImg>
                             </div>
                         ))
                         : null }
+                        
                 </StyledGrid>
         </article>
     )
@@ -58,15 +55,5 @@ const StyledGrid= styled.section`
         grid-template-columns: 1fr 1fr 1fr 1fr;
         }
 `
-// async function getHamsters(){
-//     let baseUrl = '/api';
-//     try {
-//         const response = await fetch(baseUrl + '/hamsters');
-//         const hamsterArray = await response.json();
-//         return hamsterArray;
-//     } catch (e) {
-//         console.log('Fetch failed because', e);
-//         return null;
-//     }
-// }
+
 export default Catalouge;

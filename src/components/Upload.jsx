@@ -1,7 +1,6 @@
-//Styla....(kolla sista valideringen för image)
-
 import React, {useState} from 'react';
-import './Upload.css'
+import { Link } from 'react-router-dom';
+import './Upload.css';
 
 
 const Upload = () => {
@@ -74,18 +73,21 @@ const Upload = () => {
             </div>
             <div className='form-group'>
                 <label>Upload image:</label>
-                    <input type='text' placeholder='ex. /hamsters/hamster-1.jpg'
+                    <input type='text' placeholder='ex.hamster-1.jpg'
                     onChange={e => setImageUpload(e.target.value)}  //sätt denna här: imageInputChanged(e)
                     onBlur={() => setImageUploadTouched(true)} //ta bort???
                     className={imageUploadClass}/>
                     <div className='error'>{imageUploadError}</div>
             </div>
             <div className='form-group'>
-                <button disabled={!formIsValid} 
+                <button className='primary' disabled={!formIsValid} 
                 // onClick={() => upload(name,age,loves,favoriteFood), () => setHamsterUploaded(`Your fab hamster ${name} is ready to battle!`)}>
                 onClick={() => handleClick()}>
                     Upload hamster
                 </button>
+                <Link to='/battle'>
+                    <button className='secondary'>Go to battle</button>
+                </Link>
                 <p className={hamsterUploaded ? '' : 'hide' }>{hamsterUploaded}</p>
             </div>
         </div>

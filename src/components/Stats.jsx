@@ -42,7 +42,7 @@ const Stats= () => {
                             <h3>{hamster.name}</h3>
                             <p>Wins: {hamster.wins}</p>
                         </article>
-                        <StyledImg src={'./hamsters/' + hamster.imgName} alt='hamster'></StyledImg>
+                        <StyledImg src={'./hamsters/' + hamster.imgName} alt='Fab hamster'></StyledImg>
                     </section>
                 ))}
             </article>
@@ -54,7 +54,7 @@ const Stats= () => {
                             <h3>{hamster.name}</h3>
                             <p>Defeats: {hamster.defeats}</p>
                         </article>
-                        <StyledImg src={'./hamsters/' + hamster.imgName} alt='hamster'></StyledImg>
+                        <StyledImg src={'./hamsters/' + hamster.imgName} alt='Fab hamster'></StyledImg>
                     </section>
                 ))}
             </article>
