@@ -1,5 +1,6 @@
 //Css:a....
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Stats= () => {
@@ -62,6 +63,9 @@ const Stats= () => {
                 <h1>Total games:</h1>
                 <h3>{totalGames.totalGames} games have been played!</h3>
             </article>
+            <Link to='/battle'>
+                    <StyledButton>Go to battle</StyledButton>
+                </Link>
         </div>
     )
 }
@@ -70,6 +74,16 @@ const StyledImg= styled.img`
     cursor: pointer;
     transition: transform 0.7s ease-out;
     border-radius: 5px;
+`
+const StyledButton= styled.button`
+    padding: 0.3em 1.5em;
+    border: none;
+    border-radius: 5px;
+    background-color: #17736A;
+    color: black;
+    font-size: 1em;
+    margin-top: 1em;
+    font-family: 'Raleway', sans-serif;
 `
 // const StyledImgGrid= styled.section`
 // display: grid;

@@ -1,4 +1,9 @@
 /* ---------------MOBILE FIRST-------------------- */
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 header.App-header {
     background-color: #F28D35;
     width:100%;
@@ -9,14 +14,53 @@ header.App-header {
     font-size: calc(10px + 2vmin);
     color: black;
 }
+/* --------------Animering-------------------- */
+header h1{
+    letter-spacing: 0.3em;
+    padding: 2em 1em 2em 1em;
+    position: relative;
+    display: flex;
+}
+header h1:before{
+    content: "Fab hamster Wars";
+	position: absolute;
+	margin: auto;
+	left: 0;
+	right: 0;
+	max-width: 600px;
+	color: transparent;
+	letter-spacing: 10px;
+	text-shadow: none;
+}
+header:hover h1:before{
+    transition: 0.6s ease;
+	color: black;
+	animation: jump-out 1s ease forwards;
+}
+@keyframes jump-out {
+	0% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	20% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: scale(2);
+	}
+}
+/* ----------------------------------------------- */
 main{
     padding: 3em 3em 3em 3em;
+    flex: 1;
 }
 header nav{
     display: flex;
     flex-direction: row;
 }
 header nav a{
+    position: relative;
     color:black;
     padding: 0.2em;
     flex: 1 1 auto;
@@ -36,7 +80,7 @@ header nav a.active{
 footer{
     background-color:  #F28D35;
     height: 3em;
-    position: fixed;
+    /* position: fixed; */
     bottom:0;
     width:100%;
     font-family: 'Raleway', sans-serif;
