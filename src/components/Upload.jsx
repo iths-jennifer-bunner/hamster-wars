@@ -26,6 +26,7 @@ const Upload = () => {
 
     let formIsValid = nameTouched && ageTouched && favoriteFoodTouched && lovesTouched && imageUploadTouched && (nameError === '') && (ageError === '') && (favoriteFoodError === '') && (lovesError === '') && (imageUploadError === '')
 
+    // to solve that you dont have to click outside before you submit......
     // const imageInputChanged = (e) => {
     //     setImageUpload(e.target.value);
     //     setImageUploadTouched(true);
@@ -81,7 +82,6 @@ const Upload = () => {
             </div>
             <div className='form-group'>
                 <button className='primary' disabled={!formIsValid} 
-                // onClick={() => upload(name,age,loves,favoriteFood), () => setHamsterUploaded(`Your fab hamster ${name} is ready to battle!`)}>
                 onClick={() => handleClick()}>
                     Upload hamster
                 </button>
@@ -151,7 +151,6 @@ function upload(name, age, loves, favoriteFood) {
     fetch('/api/hamsters', request)
     .then(response => response.text())
     .then(result => {console.log(result)})
-    //setHamsterUploaded(result.hamster)
     .catch(error => console.log('error', error));
 }
 
