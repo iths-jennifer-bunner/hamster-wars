@@ -15,7 +15,7 @@ function App() {
             <Switch>
                 <Route path="/">
                 <header className="App-header">
-                    <h1>Fab Hamster Wars</h1>
+                    <h1 >Fab Hamster Wars</h1>
                     <nav>
                         <Link to='/'>Start</Link>
                         <NavLink to='/battle' activeClassName='active'>Battle</NavLink>

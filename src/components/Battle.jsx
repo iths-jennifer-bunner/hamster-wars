@@ -42,7 +42,7 @@ const Battle = ({match}) => {
             }
             getRandomHamster();
         }
-    }, [newGame])
+    }, [newGame, match.params.id1, match.params.id2 ])
 
     function handleClick(winner, looser) {        
         console.log(winner.id);

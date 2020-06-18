@@ -37,7 +37,7 @@ const Matchup = ({match}) => {
     return(
     <div> {winner ? (
         <div>
-            <span role='img' aria-label='trophy'>🏆</span> <h3>Winner is:</h3>
+            <h3><span role='img' aria-label='trophy'>🏆</span> Winner is:</h3>
             <p key={ winner.id +winner.name}>{winner.name} and he or she is {winner.age} years and loves {winner.loves}</p>
             <StyledImg src={'/hamsters/' + winner.imgName} alt='Fab hamster'></StyledImg><br />
             {/* <StyledButton onClick={() => handleClick()}
@@ -47,7 +47,7 @@ const Matchup = ({match}) => {
         ) : <h1>Loading...</h1>}        
         <div> {looser ? (
         <div>
-            <span role='img' aria-label='sad face'>😥</span> <h3>Looser is:</h3>
+            <h3><span role='img' aria-label='sad face'>😥</span> Looser is:</h3>
             <p key={ looser.id +looser.name}>{looser.name} and he or she is {looser.age} years and loves {looser.loves}</p>
             <StyledImg src={'/hamsters/' + looser.imgName} alt='Fab hamster'></StyledImg><br />
             <StyledButton onClick={() => handleClick()}
