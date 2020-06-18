@@ -10,6 +10,7 @@ import Catalouge from './components/Catalouge'
 
 function App() {
     return (
+        <div className='wrapper'>
         <Router>
             <Switch>
                 <Route path="/">
@@ -38,6 +39,7 @@ function App() {
             </main>
             <footer onClick={() => scrollUp()}><p>Back to top</p></footer>
         </Router>
+        </div>
     );
 }
 
