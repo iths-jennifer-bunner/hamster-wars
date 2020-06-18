@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState, useEffect } from 'react';
-import { withRouter, useHistory} from "react-router-dom";
+import { withRouter, useHistory, Link} from "react-router-dom";
 import styled from 'styled-components';
 import Battle from './Battle';
 
@@ -37,7 +37,7 @@ const Matchup = ({match}) => {
     return(
     <div> {winner ? (
         <div>
-            <h3>Winner is:</h3>
+            <span role='img' aria-label='trophy'>🏆</span> <h3>Winner is:</h3>
             <p key={ winner.id +winner.name}>{winner.name} and he or she is {winner.age} years and loves {winner.loves}</p>
             <StyledImg src={'/hamsters/' + winner.imgName} alt='Fab hamster'></StyledImg><br />
             {/* <StyledButton onClick={() => handleClick()}
@@ -47,7 +47,7 @@ const Matchup = ({match}) => {
         ) : <h1>Loading...</h1>}        
         <div> {looser ? (
         <div>
-            <h3>Lost against:</h3>
+            <span role='img' aria-label='sad face'>😥</span> <h3>Looser is:</h3>
             <p key={ looser.id +looser.name}>{looser.name} and he or she is {looser.age} years and loves {looser.loves}</p>
             <StyledImg src={'/hamsters/' + looser.imgName} alt='Fab hamster'></StyledImg><br />
             <StyledButton onClick={() => handleClick()}
@@ -56,6 +56,9 @@ const Matchup = ({match}) => {
         </div>
         ) : ''}        
     </div>
+    <Link to='/stats'>
+        <StyledButtonSecondary>See stats</StyledButtonSecondary>
+    </Link>
     </div>
     )
 }
@@ -72,6 +75,15 @@ const StyledButton= styled.button`
     border-radius: 5px;
     background-color: #17736A;
     color: black;
+    font-size: 1em;
+    margin-top: 1em;
+    font-family: 'Raleway', sans-serif;
+`
+const StyledButtonSecondary= styled.button`
+    padding: 0.3em 1.5em;
+    border: 2px solid #17736A;
+    border-radius: 5px;
+    color: #17736A;
     font-size: 1em;
     margin-top: 1em;
     font-family: 'Raleway', sans-serif;

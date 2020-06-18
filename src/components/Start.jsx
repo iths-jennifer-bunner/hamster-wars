@@ -17,7 +17,7 @@ const StyledButton= styled.button`
     border: none;
     border-radius: 5px;
     background-color: #17736A;
-    color: black;
+    color: white;
     font-size: 1em;
     margin-top: 1em;
     font-family: 'Raleway', sans-serif;

@@ -84,7 +84,7 @@ const Upload = () => {
                 <button className='primary' disabled={!formIsValid} 
                 onClick={() => handleClick()}>
                     Upload hamster
-                </button>
+                </button><br/>
                 <Link to='/battle'>
                     <button className='secondary'>Go to battle</button>
                 </Link>
