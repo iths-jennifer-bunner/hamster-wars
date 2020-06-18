@@ -13,8 +13,6 @@ router.get('/top', async (req, res) => {
                 topHamsters.push(doc.data());
             })
         res.send({topHamsters: topHamsters})
-        console.log('top5',topHamsters);
-        
     }
     catch(err){res.status(500).send(err)}    
 } )
@@ -29,7 +27,6 @@ router.get('/bottom', async (req, res) => {
                 bottomHamsters.push(doc.data());
             })
         res.send({bottomHamsters: bottomHamsters})
-        console.log('bottom5',bottomHamsters);
     }
     catch(err){res.status(500).send(err)}    
 } )

@@ -27,11 +27,15 @@ const Upload = () => {
 
     let formIsValid = nameTouched && ageTouched && favoriteFoodTouched && lovesTouched && imageUploadTouched && (nameError === '') && (ageError === '') && (favoriteFoodError === '') && (lovesError === '') && (imageUploadError === '')
 
-    const imageInputChanged = (e) => {
-        setImageUpload(e.target.value);
-        setImageUploadTouched(true);
-    }
+    // const imageInputChanged = (e) => {
+    //     setImageUpload(e.target.value);
+    //     setImageUploadTouched(true);
+    // }
 
+    const handleClick = () => {
+        upload(name,age,loves,favoriteFood);
+        setHamsterUploaded(`Your fab hamster ${name} is ready to battle!`);
+    }
 
     return(
         <div>
@@ -70,15 +74,16 @@ const Upload = () => {
             </div>
             <div className='form-group'>
                 <label>Upload image:</label>
-                    <input type='text' placeholder='ex. hamster-1.jpg'
-                    onChange={e => imageInputChanged(e)}
-                    // onBlur={() => setImageUploadTouched(true)}
+                    <input type='text' placeholder='ex. /hamsters/hamster-1.jpg'
+                    onChange={e => setImageUpload(e.target.value)}  //sätt denna här: imageInputChanged(e)
+                    onBlur={() => setImageUploadTouched(true)} //ta bort???
                     className={imageUploadClass}/>
                     <div className='error'>{imageUploadError}</div>
             </div>
             <div className='form-group'>
-                <button disabled ={!formIsValid}
-                onClick={() => upload(name,age,loves,favoriteFood), () => setHamsterUploaded(`Your fab hamster ${name} is ready to battle!`)}>
+                <button disabled={!formIsValid} 
+                // onClick={() => upload(name,age,loves,favoriteFood), () => setHamsterUploaded(`Your fab hamster ${name} is ready to battle!`)}>
+                onClick={() => handleClick()}>
                     Upload hamster
                 </button>
                 <p className={hamsterUploaded ? '' : 'hide' }>{hamsterUploaded}</p>
@@ -152,3 +157,4 @@ function upload(name, age, loves, favoriteFood) {
 export default Upload ;
 
 // Här ska det finnas ett formulär för att fylla i all information om en tävlande hamster som databasen behöver. All information ska valideras så att den är informativ och användarvänlig. Man behöver inte ladda upp en riktig bild i grundversionen.
+

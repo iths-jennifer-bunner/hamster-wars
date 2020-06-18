@@ -1,18 +1,17 @@
 /* ---------------MOBILE FIRST-------------------- */
-.App-header {
+header.App-header {
     background-color: #F28D35;
+    width:100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: black;
-    width:100%;
 }
 main{
     padding: 3em 3em 3em 3em;
 }
-
 header nav{
     display: flex;
     flex-direction: row;
@@ -60,12 +59,18 @@ p {
 h3{
     font-family: 'Raleway', sans-serif; 
 }
+/*---------Media queries-"Ipad"-------------*/
+@media only screen and (min-width: 425px){
+    main{
+        padding: 3em 3em 3em 3em;
+    }
+}
 
 /* ---------------LARGER TABLETS AND DESKTOP------------------------ */
 
 @media only screen and (min-width: 600px){
     main{
-        padding: 3em 15em 3em 15em;
+        padding: 3em 10em 3em 10em;
     }
 }
 

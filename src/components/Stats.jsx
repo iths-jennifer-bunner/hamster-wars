@@ -10,14 +10,14 @@ const Stats= () => {
 
     useEffect(() => {
         async function getTopHamsters() {
-            const response = await fetch("/api/charts/top");
+            let response = await fetch("/api/charts/top");
             const topFive = await response.json();            
             setTopHamsters(topFive.topHamsters);
         }
         getTopHamsters();
 
         async function getBottomHamsters() {
-            const response = await fetch("/api/charts/bottom");
+            let response = await fetch("/api/charts/bottom");
             const bottomFive = await response.json();
             setBottomHamsters(bottomFive.bottomHamsters);
             

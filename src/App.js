@@ -6,6 +6,7 @@ import Battle from './components/Battle';
 import Stats from './components/Stats';
 import Upload from './components/Upload';
 import Matchup from './components/Matchup';
+import Catalouge from './components/Catalouge'
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                         <NavLink to='/battle' activeClassName='active'>Battle</NavLink>
                         <NavLink to='/stats' activeClassName='active'>Stats</NavLink>
                         <NavLink to='/upload' activeClassName='active'>Upload</NavLink>
+                        <NavLink to='/catalouge' activeClassName='active'>Catalouge</NavLink>
                     </nav>
                 </header>
                 </Route>
@@ -29,6 +31,7 @@ function App() {
                     <Route path='/battle' ><Battle /></Route>
                     <Route path='/stats'><Stats /></Route>
                     <Route path='/upload'><Upload /></Route>
+                    <Route path='/catalouge'><Catalouge /></Route>
                     <Route path='/matchup/:winner/:looser'><Matchup /></Route>
                     <Route path='/'><Start /></Route>
                 </Switch>

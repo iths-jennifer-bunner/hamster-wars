@@ -89,7 +89,7 @@ const Battle = ({match}) => {
 function updateWinner(id) {
     console.log('id är' ,id);
     
-    const myHeaders = new Headers();
+    let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     let raw = JSON.stringify({"wins":1,"defeats":0});
@@ -101,7 +101,7 @@ function updateWinner(id) {
         redirect: 'follow'
     };
 
-    fetch(`/api/hamsters/${id}/results`, requestOptions)
+    fetch(`/api/hamsters/${id}/result`, requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -121,7 +121,7 @@ function updateWinner(id) {
             redirect: 'follow'
         };
     
-        fetch(`/api/hamsters/${id}/results`, requestOptions)
+        fetch(`/api/hamsters/${id}/result`, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
