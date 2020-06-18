@@ -12,7 +12,7 @@ header.App-header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
+    font-size: calc(5px + 2vmin);
     color: black;
 }
 /* ---------Animering header text---------- */
@@ -48,7 +48,7 @@ header:hover h1:before{
 	}
 	100% {
 		opacity: 0;
-		transform: scale(2);
+		transform: scale(1.3);
 	}
 }
 /* ----------------------------------------------- */
@@ -104,9 +104,25 @@ h3{
     font-family: 'Raleway', sans-serif; 
 }
 /*---------Media queries-"Ipad"-------------*/
-@media only screen and (min-width: 425px){
+@media only screen and (min-width: 480px){
     main{
         padding: 3em 3em 3em 3em;
+    }
+    header.App-header {
+        font-size: calc(5px + 2vmin);
+    }
+    @keyframes jump-out {
+        0% {
+            opacity: 0;
+            transform: scale(1);
+        }
+        20% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            transform: scale(1.4);
+        }
     }
 }
 
@@ -116,6 +132,22 @@ h3{
     main{
         padding: 3em 10em 3em 10em;
     }
+    header.App-header {
+        font-size: calc(10px + 2vmin);
+    }
+    @keyframes jump-out {
+        0% {
+            opacity: 0;
+            transform: scale(1);
+        }
+        20% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            transform: scale(2);
+        }
+    } 
 }
 
 

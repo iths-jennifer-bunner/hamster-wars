@@ -44,7 +44,7 @@ const Matchup = ({match}) => {
             >New Game</StyledButton>
             {click === true ? <Battle /> : false} */}
         </div>
-        ) : <h1>Loading...</h1>}        
+        ) : <h1>It seems like there has been no match...</h1>}        
         <div> {looser ? (
         <div>
             <h3><span role='img' aria-label='sad face'>😥</span> Looser is:</h3>
@@ -74,7 +74,7 @@ const StyledButton= styled.button`
     border: none;
     border-radius: 5px;
     background-color: #17736A;
-    color: black;
+    color: white;
     font-size: 1em;
     margin-top: 1em;
     font-family: 'Raleway', sans-serif;
@@ -84,7 +84,9 @@ const StyledButtonSecondary= styled.button`
     border: 2px solid #17736A;
     border-radius: 5px;
     color: #17736A;
+    background-color: #ffffff;
     font-size: 1em;
+    font-weight: bold;
     margin-top: 1em;
     font-family: 'Raleway', sans-serif;
 `
